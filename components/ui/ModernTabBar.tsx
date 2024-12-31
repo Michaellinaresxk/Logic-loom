@@ -1,8 +1,8 @@
-// components/navigation/ModernTabBar.tsx
 import React from 'react';
 import { Pressable, View, Text, useColorScheme } from 'react-native';
 import { useRouter } from 'expo-router';
 import type { TabConfigType } from '@/types/TabConfigType';
+import { ThemedText } from './ThemeText';
 
 interface ModernTabBarProps {
   focused: boolean;
@@ -77,7 +77,7 @@ export function ModernTabBar({
           },
         ]}
       >
-        <Text
+        <ThemedText
           style={[
             {
               fontSize: 12,
@@ -87,7 +87,7 @@ export function ModernTabBar({
           ]}
         >
           {config.title}
-        </Text>
+        </ThemedText>
       </View>
     </Pressable>
   );
