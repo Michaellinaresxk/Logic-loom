@@ -1,5 +1,5 @@
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ui/ThemeText';
+import { ThemedView } from '@/components/ui/ThemeView';
 import React from 'react';
 
 export default function TabFourScreen() {

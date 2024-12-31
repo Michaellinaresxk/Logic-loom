@@ -1,14 +1,13 @@
-// components/ui/ModernHeader.tsx
 import React from 'react';
 import {
   View,
-  Text,
   TextInput,
   StyleSheet,
   Dimensions,
   SafeAreaView,
 } from 'react-native';
 import { Search } from 'lucide-react-native';
+import { ThemedText } from './ThemeText';
 
 const { width, height } = Dimensions.get('window');
 
@@ -22,7 +21,7 @@ export function ModernHeader({
   onSearch,
 }: ModernHeaderProps) {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView>
       <View style={styles.container}>
         {/* Background con gradiente */}
         <View style={styles.backgroundGradient}>
@@ -34,8 +33,10 @@ export function ModernHeader({
         <View style={styles.content}>
           {/* Texto de bienvenida */}
           <View style={styles.welcomeContainer}>
-            <Text style={styles.welcomeText}>{title}</Text>
-            <Text style={styles.subtitleText}>Find your favorite course</Text>
+            <ThemedText style={styles.welcomeText}>{title}</ThemedText>
+            <ThemedText style={styles.subtitleText}>
+              Find your favorite course
+            </ThemedText>
           </View>
 
           {/* Barra de búsqueda */}
@@ -55,9 +56,6 @@ export function ModernHeader({
 }
 
 const styles = StyleSheet.create({
-  // safeArea: {
-  //   backgroundColor: '#4F46E5',
-  // },
   container: {
     width: width, // Ancho completo de la pantalla
     height: height * 0.3, // 30% de la altura de la pantalla

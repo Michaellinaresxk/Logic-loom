@@ -1,21 +1,23 @@
-import { StyleSheet, View } from 'react-native';
-import { ThemedView } from '@/components/ThemedView';
-import { ScreenBackground } from '@/components/ui/ScreenBackground';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { ModernHeader } from '@/components/ui/ModernHeader';
-import { ThemedText } from '@/components/ThemedText';
+import { CourseList } from '@/components/ui/CourseList';
+import { sampleCourses } from '@/constants/sampleCourses';
 
 export default function HomeScreen() {
-  const handleSearch = (text: string) => {
-    // Implementa tu lógica de búsqueda aquí
-    console.log('Searching for:', text);
+  const handleCoursePress = (courseId: string) => {
+    console.log('Course pressed:', courseId);
   };
 
   return (
-    <ThemedView style={styles.titleContainer}>
-      <ScreenBackground>
-        <ModernHeader title='Welcome back, Alex!' onSearch={handleSearch} />
-      </ScreenBackground>
-    </ThemedView>
+    <View style={styles.container}>
+      <ModernHeader title='Welcome back!' />
+      <View style={styles.listContainer}>
+        <View style={styles.listContainer}>
+          <CourseList courses={sampleCourses} />
+        </View>{' '}
+      </View>
+    </View>
   );
 }
 
@@ -24,12 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F9FAFB',
   },
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    marginTop: 50,
-    height: 250,
+  listContainer: {
+    marginTop: 20,
   },
 });

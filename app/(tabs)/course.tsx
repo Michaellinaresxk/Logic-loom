@@ -1,6 +1,6 @@
-import { ThemedView } from '@/components/ThemedView';
+import { ThemedView } from '@/components/ui/ThemeView';
 import React from 'react';
-import { ThemedText } from '../../components/ThemedText';
+import { ThemedText } from '../../components/ui/ThemeText';
 
 export default function TabThreeScreen() {
   return (
