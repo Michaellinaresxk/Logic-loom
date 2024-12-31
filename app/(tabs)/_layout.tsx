@@ -8,43 +8,56 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+// Definimos la configuración de las pestañas
+const TAB_CONFIG = {
+  index: {
+    title: 'Home',
+    iconName: 'house.fill',
+  },
+  explore: {
+    title: 'Explore',
+    iconName: 'safari.fill',
+  },
+  'my-course': {
+    title: 'My Course',
+    iconName: 'book.fill',
+  },
+  profile: {
+    title: 'Profile',
+    iconName: 'person.fill',
+  },
+} as const;
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  const screenOptions = {
+    tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+    headerShown: false,
+    tabBarButton: HapticTab,
+    tabBarBackground: TabBarBackground,
+    tabBarStyle: Platform.select({
+      ios: {
+        position: 'absolute',
+      },
+      default: {},
+    }),
+  };
+
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}
-    >
-      <Tabs.Screen
-        name='index'
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='house.fill' color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name='explore'
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='paperplane.fill' color={color} />
-          ),
-        }}
-      />
+    <Tabs screenOptions={screenOptions}>
+      {Object.entries(TAB_CONFIG).map(([name, config]) => (
+        <Tabs.Screen
+          key={name}
+          name={name as keyof typeof TAB_CONFIG}
+          options={{
+            title: config.title,
+            tabBarIcon: ({ color }) => (
+              <IconSymbol size={28} name={config.iconName} color={color} />
+            ),
+          }}
+        />
+      ))}
     </Tabs>
   );
 }

@@ -1,36 +1,35 @@
 import { StyleSheet, View } from 'react-native';
 import { ThemedView } from '@/components/ThemedView';
-import { LoginScreen } from '../Screen/LoginScreen';
-import { SignedIn, SignedOut } from '@clerk/clerk-expo';
+import { ScreenBackground } from '@/components/ui/ScreenBackground';
+import { ModernHeader } from '@/components/ui/ModernHeader';
 import { ThemedText } from '@/components/ThemedText';
-import { Link } from 'expo-router';
 
 export default function HomeScreen() {
+  const handleSearch = (text: string) => {
+    // Implementa tu lógica de búsqueda aquí
+    console.log('Searching for:', text);
+  };
+
   return (
     <ThemedView style={styles.titleContainer}>
-      <View>
-        <SignedIn>
-          {/* <ThemedText>Hello {user?.emailAddresses[0].emailAddress}</ThemedText> */}
-        </SignedIn>
-        <SignedOut>
-          <Link href='/(auth)/sign-in'>
-            <ThemedText>Sign in</ThemedText>
-          </Link>
-          <Link href='/(auth)/sign-up'>
-            <ThemedText>Sign up</ThemedText>
-          </Link>
-        </SignedOut>
-      </View>
+      <ScreenBackground>
+        <ModernHeader title='Welcome back, Alex!' onSearch={handleSearch} />
+      </ScreenBackground>
     </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
     flex: 1,
+    backgroundColor: '#F9FAFB',
+  },
+  titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
+    marginTop: 50,
+    height: 250,
   },
 });
