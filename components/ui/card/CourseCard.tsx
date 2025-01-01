@@ -76,7 +76,7 @@ export function CourseCard({ course }: CourseCardProps) {
         )}
 
         {/* Precio */}
-        <ThemedText style={styles.price}>${course.price.toFixed(2)}</ThemedText>
+        {/* <ThemedText style={styles.price}>${course.price.toFixed(2)}</ThemedText> */}
       </View>
     </Pressable>
   );
