@@ -58,7 +58,7 @@ export function ModernHeader({
 const styles = StyleSheet.create({
   container: {
     width: width, // Ancho completo de la pantalla
-    height: height * 0.3, // 30% de la altura de la pantalla
+    height: height * 0.2, // 30% de la altura de la pantalla
     overflow: 'hidden',
   },
   backgroundGradient: {
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
-    paddingTop: 40,
+    paddingTop: 30,
     width: width, // Asegura que el contenido ocupe todo el ancho
   },
   welcomeContainer: {
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FFFFFF',
     marginBottom: 8,
+    zIndex: 1,
   },
   subtitleText: {
     fontSize: 18,
