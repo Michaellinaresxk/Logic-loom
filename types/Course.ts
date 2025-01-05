@@ -12,6 +12,7 @@ export interface Course {
 
 export interface CourseDetailsProps {
   course: {
+    [x: string]: string;
     title: string;
     instructor: string;
     duration: string;
