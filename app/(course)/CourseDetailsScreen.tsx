@@ -12,8 +12,14 @@ import { User, Clock, BookOpen, PlayCircle } from 'lucide-react-native';
 import { ThemedView } from '@/components/ui/ThemeView';
 import { ThemedText } from '@/components/ui/ThemeText';
 import { CourseDetailsProps } from '@/types/Course';
+import { useRouter } from 'expo-router';
 
 const { width } = Dimensions.get('window');
+const router = useRouter();
+
+const handleEnroll = (courseId: string) => {
+  router.push(`/enroll/${courseId}`);
+};
 
 export default function CourseDetailsScreen({ course }: CourseDetailsProps) {
   return (
@@ -97,7 +103,10 @@ export default function CourseDetailsScreen({ course }: CourseDetailsProps) {
       {/* Botones de acción */}
       <View style={styles.actionContainer}>
         {course.price === 0 ? (
-          <Pressable style={styles.enrollButton}>
+          <Pressable
+            style={styles.enrollButton}
+            onPress={() => handleEnroll(course.id)}
+          >
             <ThemedText style={styles.enrollButtonText}>
               Enroll For Free
             </ThemedText>
