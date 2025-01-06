@@ -1,21 +1,23 @@
 import { Stack } from 'expo-router';
 import React from 'react';
-import EnrollmentSuccessScreen from './EnrollmentSuccessScreen';
 
 export default function CourseLayout() {
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='[id]' />
+      <Stack.Screen name='enroll/[id]' />
       <Stack.Screen
-        name='[id]'
+        name='chapters/[id]'
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: 'Course Content',
         }}
       />
       <Stack.Screen
-        name='enroll/[id]'
+        name='chapters/[id]/content/[chapterId]'
         options={{
-          title: 'Enrollment Successful',
-          headerShown: false,
+          headerShown: true,
+          headerTitle: 'Chapter Content',
         }}
       />
     </Stack>

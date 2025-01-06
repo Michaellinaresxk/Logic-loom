@@ -8,15 +8,17 @@ import {
   Download,
   MessageCircle,
 } from 'lucide-react-native';
-import { ThemedView } from '@/components/ui/ThemeView';
 import { ThemedText } from '@/components/ui/ThemeText';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 // import { CourseEnrollmentProps } from '@/types/Course';
 const router = useRouter();
 
 export default function EnrollmentSuccessScreen(course) {
+  const router = useRouter();
+  const { id } = useLocalSearchParams();
+
   const handleStartCourse = () => {
-    router.push(`/course/${id}/content/${course.chapters[0].id}`);
+    router.push(`/chapters/${id}`); // Navega a la lista de capítulos
   };
 
   return (
