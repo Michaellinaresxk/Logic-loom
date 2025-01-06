@@ -10,7 +10,7 @@ export default function CourseDetails() {
   const courseData = {
     id: id as string,
     title: 'Learn Basic HTML',
-    instructor: 'Tubeguruji',
+    instructor: 'Michael Linares',
     duration: '2h 30min',
     level: 'Basic',
     chaptersCount: 15,

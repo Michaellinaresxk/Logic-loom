@@ -1,14 +1,7 @@
 // app/(course)/enroll/[id].tsx
 import React from 'react';
 import { View, ScrollView, StyleSheet, Pressable, Image } from 'react-native';
-import {
-  User,
-  Clock,
-  BookOpen,
-  Download,
-  MessageCircle,
-} from 'lucide-react-native';
-import { ThemedView } from '@/components/ui/ThemeView';
+import { Clock, BookOpen, Download, MessageCircle } from 'lucide-react-native';
 import { ThemedText } from '@/components/ui/ThemeText';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 
@@ -20,7 +13,7 @@ export default function EnrollmentSuccessScreen() {
   const courseData = {
     id: id as string,
     title: 'Learn Basic HTML',
-    instructor: 'Tubeguruji',
+    instructor: 'Michael Linares',
     instructorImage: 'https://picsum.photos/100/100', // Agregué esto para la imagen
     duration: '2h 30min',
     level: 'Basic',
@@ -51,7 +44,8 @@ export default function EnrollmentSuccessScreen() {
   };
 
   const handleStartCourse = () => {
-    router.push(`/course/${id}/content/${courseData.chapters[0].id}`);
+    // Primero navega a la vista general de chapters del curso
+    router.push(`/chapters/${id}`);
   };
 
   const handleResourcesPress = () => {
